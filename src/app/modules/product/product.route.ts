@@ -28,7 +28,7 @@ router.patch(
   multerUpload.array("files"),
   validateRequest(updateProductZodSchema),
   ProductControllers.updateProduct
-); //any user
+);
 //anyone
 router.get("/:id", ProductControllers.getSingleProduct);
 //admin

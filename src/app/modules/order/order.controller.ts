@@ -87,6 +87,24 @@ const deleteOrder = catchAsync(async (req: Request, res: Response, next: NextFun
     })
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getOrdersSummary = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const decodedToken = req.user;
+    const summary = await OrderServices.getOrdersSummary(decodedToken)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Orders summary fetched successfully",
+        data: summary,
+    })
+})
+
 export const OrderControllers={
-    createOrder, getAllOrders, getSingleOrder, updateOrder, deleteOrder
+    createOrder, 
+    getAllOrders, 
+    getSingleOrder, 
+    updateOrder, 
+    deleteOrder,
+    getOrdersSummary
 }

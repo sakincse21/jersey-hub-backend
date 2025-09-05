@@ -7,6 +7,8 @@ import { cancelOrderZodSchema, createOrderZodSchema, updateOrderZodSchema } from
 
 const router = Router();
 
+//admin only - orders summary
+router.get('/summary', authCheck(IRole.ADMIN), OrderControllers.getOrdersSummary)
 //admin or self
 router.get('/', authCheck(...Object.values(IRole)), OrderControllers.getAllOrders) 
 //user

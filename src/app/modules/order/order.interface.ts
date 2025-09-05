@@ -14,7 +14,8 @@ export enum IOrderStatus {
     CONFIRMED='CONFIRMED',
     SHIPPED='SHIPPED',
     DELIVERED='DELIVERED',
-    CANCELLED='CANCELLED'
+    CANCELLED='CANCELLED',
+    REFUNDED='REFUNDED'
 }
 
 export interface IOrderItem {
