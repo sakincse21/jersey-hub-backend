@@ -145,6 +145,8 @@ const getAllOrders = async (
     };
   }
 
+  console.log(query);
+  
   const queryBuilder = new QueryBuilder(Order.find(params), query);
   const ordersData = queryBuilder
     .filter()

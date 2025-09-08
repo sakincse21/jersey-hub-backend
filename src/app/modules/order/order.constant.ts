@@ -1,1 +1,1 @@
-export const orderSearchableFields = ['']
+export const orderSearchableFields = ['phoneNo','bkashTransactionId','shippingAddress','name']

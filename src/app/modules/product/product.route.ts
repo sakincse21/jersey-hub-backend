@@ -30,6 +30,7 @@ router.patch(
   ProductControllers.updateProduct
 );
 //anyone
+router.get("/byslug/:slug", ProductControllers.getProductBySlug);
 router.get("/:id", ProductControllers.getSingleProduct);
 //admin
 router.delete("/:id", authCheck(IRole.ADMIN), ProductControllers.deleteProduct);

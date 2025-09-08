@@ -126,6 +126,16 @@ const getSingleProduct = async (productId: string) => {
   return user.toObject();
 };
 
+const getProductBySlug = async (slug: string) => {
+  const user = await Product.findOne({slug}); //order er jinish dite hbe
+
+  if (!user) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Product does not exist.");
+  }
+
+  return user.toObject();
+};
+
 const deleteProduct = async (productId: string) => {
   const ifProductExist = await Product.findById(productId);
 
@@ -154,4 +164,5 @@ export const ProductServices = {
   getAllProducts,
   getSingleProduct,
   deleteProduct,
+  getProductBySlug
 };

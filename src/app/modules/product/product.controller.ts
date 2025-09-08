@@ -47,13 +47,26 @@ const getSingleProduct = catchAsync(async (req: Request, res: Response, next: Ne
     })
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getProductBySlug = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const slug = req.params.slug;
+    const products = await ProductServices.getProductBySlug(slug)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.CREATED,
+        message: "Product fetched successfully",
+        data: products,
+    })
+})
+
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const updateProduct = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const productId = req.params.id;
     const payload : IProduct = {
         ...req.body,
-        images: (req.files as Express.Multer.File[]).map(file=>file.path)
+        images: (req.files as Express.Multer.File[])?.map(file=>file.path)
     }
     const product = await ProductServices.updateProduct(productId, payload)
 
@@ -80,5 +93,5 @@ const deleteProduct = catchAsync(async (req: Request, res: Response, next: NextF
 })
 
 export const ProductControllers={
-    createProduct, getAllProducts, getSingleProduct, updateProduct, deleteProduct
+    createProduct, getAllProducts, getSingleProduct, updateProduct, deleteProduct, getProductBySlug
 }

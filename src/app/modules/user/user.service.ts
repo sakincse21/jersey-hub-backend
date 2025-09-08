@@ -168,8 +168,7 @@ const getAllUsers = async (query: Record<string, string>) => {
 //anyone can get his own info
 const getMe = async (userId: string) => {
   const user = await User.findById(userId)
-    .select("-password")
-    .populate("walletId"); //order er info dibo
+    .select("-password") //order er info dibo
 
   if (!user) {
     throw new AppError(httpStatus.BAD_REQUEST, "User does not exists.");
