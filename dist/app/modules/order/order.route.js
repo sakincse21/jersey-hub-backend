@@ -8,6 +8,8 @@ const user_interface_1 = require("../user/user.interface");
 const order_controller_1 = require("./order.controller");
 const order_validation_1 = require("./order.validation");
 const router = (0, express_1.Router)();
+//admin only - orders summary
+router.get('/summary', (0, authCheck_1.authCheck)(user_interface_1.IRole.ADMIN), order_controller_1.OrderControllers.getOrdersSummary);
 //admin or self
 router.get('/', (0, authCheck_1.authCheck)(...Object.values(user_interface_1.IRole)), order_controller_1.OrderControllers.getAllOrders);
 //user

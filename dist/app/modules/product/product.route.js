@@ -14,8 +14,9 @@ router.get("/", product_controller_1.ProductControllers.getAllProducts);
 //admin
 router.post("/create", (0, authCheck_1.authCheck)(user_interface_1.IRole.ADMIN), multer_config_1.multerUpload.array("files"), (0, validateRequest_1.validateRequest)(product_validation_1.createProductZodSchema), product_controller_1.ProductControllers.createProduct);
 //admin
-router.patch("/:id", (0, authCheck_1.authCheck)(user_interface_1.IRole.ADMIN), multer_config_1.multerUpload.array("files"), (0, validateRequest_1.validateRequest)(product_validation_1.updateProductZodSchema), product_controller_1.ProductControllers.updateProduct); //any user
+router.patch("/:id", (0, authCheck_1.authCheck)(user_interface_1.IRole.ADMIN), multer_config_1.multerUpload.array("files"), (0, validateRequest_1.validateRequest)(product_validation_1.updateProductZodSchema), product_controller_1.ProductControllers.updateProduct);
 //anyone
+router.get("/byslug/:slug", product_controller_1.ProductControllers.getProductBySlug);
 router.get("/:id", product_controller_1.ProductControllers.getSingleProduct);
 //admin
 router.delete("/:id", (0, authCheck_1.authCheck)(user_interface_1.IRole.ADMIN), product_controller_1.ProductControllers.deleteProduct);

@@ -66,6 +66,7 @@ class QueryBuilder {
     }
     search(searchableField) {
         const searchTerm = this.query.searchTerm;
+        // console.log(searchTerm);
         if (searchTerm) {
             const searchQuery = {
                 $or: searchableField.map((field) => ({

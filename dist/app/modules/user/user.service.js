@@ -149,8 +149,7 @@ const getAllUsers = (query) => __awaiter(void 0, void 0, void 0, function* () {
 //anyone can get his own info
 const getMe = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.User.findById(userId)
-        .select("-password")
-        .populate("walletId"); //order er info dibo
+        .select("-password"); //order er info dibo
     if (!user) {
         throw new appErrorHandler_1.default(http_status_1.default.BAD_REQUEST, "User does not exists.");
     }

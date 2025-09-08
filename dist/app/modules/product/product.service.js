@@ -108,6 +108,13 @@ const getSingleProduct = (productId) => __awaiter(void 0, void 0, void 0, functi
     }
     return user.toObject();
 });
+const getProductBySlug = (slug) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield product_model_1.Product.findOne({ slug }); //order er jinish dite hbe
+    if (!user) {
+        throw new appErrorHandler_1.default(http_status_1.default.BAD_REQUEST, "Product does not exist.");
+    }
+    return user.toObject();
+});
 const deleteProduct = (productId) => __awaiter(void 0, void 0, void 0, function* () {
     const ifProductExist = yield product_model_1.Product.findById(productId);
     if (!ifProductExist) {
@@ -127,4 +134,5 @@ exports.ProductServices = {
     getAllProducts,
     getSingleProduct,
     deleteProduct,
+    getProductBySlug
 };

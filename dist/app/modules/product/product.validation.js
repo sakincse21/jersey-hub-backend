@@ -77,10 +77,6 @@ exports.updateProductZodSchema = zod_1.default.object({
         .number({ invalid_type_error: "Price must be a number" })
         .min(0, { message: "Price must be a positive number" })
         .optional(),
-    images: zod_1.default
-        .array(zod_1.default.string().url({ message: "Each image must be a valid URL" }))
-        .min(1, { message: "At least one image is required" })
-        .optional(),
     variants: zod_1.default
         .array(variantSchema)
         .optional(),

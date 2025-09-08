@@ -51,9 +51,21 @@ const getSingleProduct = (0, catchAsync_1.catchAsync)((req, res, next) => __awai
     });
 }));
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getProductBySlug = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const slug = req.params.slug;
+    const products = yield product_service_1.ProductServices.getProductBySlug(slug);
+    (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        statusCode: http_status_1.default.CREATED,
+        message: "Product fetched successfully",
+        data: products,
+    });
+}));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const updateProduct = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const productId = req.params.id;
-    const payload = Object.assign(Object.assign({}, req.body), { images: req.files.map(file => file.path) });
+    const payload = Object.assign(Object.assign({}, req.body), { images: (_a = req.files) === null || _a === void 0 ? void 0 : _a.map(file => file.path) });
     const product = yield product_service_1.ProductServices.updateProduct(productId, payload);
     (0, sendResponse_1.sendResponse)(res, {
         success: true,
@@ -74,5 +86,5 @@ const deleteProduct = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter
     });
 }));
 exports.ProductControllers = {
-    createProduct, getAllProducts, getSingleProduct, updateProduct, deleteProduct
+    createProduct, getAllProducts, getSingleProduct, updateProduct, deleteProduct, getProductBySlug
 };

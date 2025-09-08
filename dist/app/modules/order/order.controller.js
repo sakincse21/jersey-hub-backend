@@ -86,6 +86,22 @@ const deleteOrder = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(v
         data: order,
     });
 }));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getOrdersSummary = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const decodedToken = req.user;
+    const summary = yield order_service_1.OrderServices.getOrdersSummary(decodedToken);
+    (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: "Orders summary fetched successfully",
+        data: summary,
+    });
+}));
 exports.OrderControllers = {
-    createOrder, getAllOrders, getSingleOrder, updateOrder, deleteOrder
+    createOrder,
+    getAllOrders,
+    getSingleOrder,
+    updateOrder,
+    deleteOrder,
+    getOrdersSummary
 };

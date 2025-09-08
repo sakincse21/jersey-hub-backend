@@ -18,4 +18,5 @@ var IOrderStatus;
     IOrderStatus["SHIPPED"] = "SHIPPED";
     IOrderStatus["DELIVERED"] = "DELIVERED";
     IOrderStatus["CANCELLED"] = "CANCELLED";
+    IOrderStatus["REFUNDED"] = "REFUNDED";
 })(IOrderStatus || (exports.IOrderStatus = IOrderStatus = {}));

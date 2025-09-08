@@ -25,7 +25,7 @@ const login = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0,
     (0, sendResponse_1.sendResponse)(res, {
         success: true,
         statusCode: http_status_1.default.CREATED,
-        message: "User Created Successfully",
+        message: "User Logged in Successfully",
         data: Object.assign(Object.assign({}, user), { accessToken })
     });
 }));
