@@ -14,6 +14,7 @@ const ItemsSchema = new Schema<IOrderItem>({
     },
     productId: {
         type: Schema.Types.ObjectId,
+        ref: 'Product',
         required: true
     }
 }, { _id: false });

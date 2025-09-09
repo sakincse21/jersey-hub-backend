@@ -127,7 +127,7 @@ const updateUser = async (
 
 //admin can get a single user's info
 const getSingleUser = async (userId: string) => {
-  const user = await User.findById(userId).select("-password").populate("walletId"); //order er jinish dite hbe
+  const user = await User.findById(userId).select("-password"); //order er jinish dite hbe
 
   if (!user) {
     throw new AppError(httpStatus.BAD_REQUEST, "User does not exist.");

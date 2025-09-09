@@ -80,7 +80,7 @@ class QueryBuilder {
     }
     sort() {
         const sortBy = this.query.sortBy;
-        const sort = this.query.sort && sortBy ? (this.query.sort === 'asc' ? `${sortBy}` : `-${sortBy}`) : "-updatedAt";
+        const sort = this.query.sort && sortBy ? (this.query.sort === 'asc' ? `${sortBy}` : `-${sortBy}`) : "-createdAt";
         this.modelQuery = this.modelQuery.sort(sort);
         return this;
     }

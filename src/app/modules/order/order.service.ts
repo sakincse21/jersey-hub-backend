@@ -164,7 +164,10 @@ const getAllOrders = async (
 };
 
 const getSingleOrder = async (decodedToken: JwtPayload, orderId: string) => {
-  const ifOrderExists = await Order.findById(orderId);
+  const ifOrderExists = await Order.findById(orderId).populate({
+    path: 'items.productId',
+    select: 'name price images'
+  });
   if (!ifOrderExists) {
     throw new AppError(httpStatus.BAD_REQUEST, "Order ID does not exist.");
   }

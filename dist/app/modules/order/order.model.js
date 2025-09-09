@@ -16,6 +16,7 @@ const ItemsSchema = new mongoose_1.Schema({
     },
     productId: {
         type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Product',
         required: true
     }
 }, { _id: false });

@@ -132,7 +132,10 @@ const getAllOrders = (decodedToken, query) => __awaiter(void 0, void 0, void 0, 
 });
 const getSingleOrder = (decodedToken, orderId) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    const ifOrderExists = yield order_model_1.Order.findById(orderId);
+    const ifOrderExists = yield order_model_1.Order.findById(orderId).populate({
+        path: 'items.productId',
+        select: 'name price images'
+    });
     if (!ifOrderExists) {
         throw new appErrorHandler_1.default(http_status_1.default.BAD_REQUEST, "Order ID does not exist.");
     }
